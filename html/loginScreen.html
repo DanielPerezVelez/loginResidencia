@@ -34,18 +34,6 @@
                         <button id="btnFoLo"> Entrar </button>
                     </div>
                     <br>
-                    <?php if(isset($_GET['registroValido'])){
-                        ?>
-                        <script src="js/mostrarLo.js"></script>
-                        <a class="aExito">¡Usuario registrado exitosamente!</a>
-                        <?php
-                    }?>
-                    <?php if(isset($_GET['errorLogin'])){
-                        ?>
-                        <script src="js/mostrarLo.js"></script>
-                        <a class="aFallo">¡Correo o contraseña incorrectas!</a>
-                        <?php
-                    }?>
                 </form>
 
                 <form id="formRegister" action="php/registroUsuario.php" method="POST" class="formulario_register">
@@ -63,26 +51,6 @@
                         <button id="btnFoRe"> Registrarse </button>
                     </div>
                     <br>
-                    <?php if(isset($_GET['errorCorreo'])){
-                        ?>
-                        <script src="js/mostrarRe.js"></script>
-                        <div class="divErrores1">
-                            <a class="aFallo">El correo ya ha sido utilizado con anterioridad.</a>
-                            <br>
-                            <a class="aFallo">Inicia sesion para continuar.</a>
-                        </div>
-                        <?php
-                        }
-                        if(isset($_GET['errorTelefono'])){
-                        ?>
-                        <script src="js/mostrarRe.js"></script>
-                        <div class="divErrores2">
-                            <a class="aFallo">El telefono que ingresaste ya está ocupado.</a>
-                            <br>
-                            <a class="aFallo">Elige uno diferente para continuar.</a>
-                        </div>
-                        <?php
-                    }?>
                 </form>
             </div>
         </div>
