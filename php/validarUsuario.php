@@ -6,7 +6,8 @@ $correo= $_POST ['loginCorreo'];
 $password= $_POST ['loginPassword'];
 
 if(validar($correo,$password,$conexion)==1){
-   echo "success";
+   sleep(1);
+   header("location: ../html/dashboard.html");
     
 }
 
