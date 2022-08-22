@@ -58,6 +58,13 @@
                         <input required id="inputPasswordRe" type="password" placeholder="Contraseña" class="registerPasswordClass" name="registerPassword">
                     </div>
                     <br>
+                    <h4>¿Qué desea hacer?</h4>
+                    <br>
+                    <select class="selectRol" name= "selectRol" id="selectRol">
+                        <option value="admin">Administrar sus propiedades</option>
+                        <option value="clienteCompra">Adquirir una propiedad</option>
+                        <option value="clienteVende">Ofrecer propiedades a clientes</option>
+                    </select>
                     <a class="aFallo" id="error"></a>
                     <div class="divBtnFoRe">
                         <button id="btnFoRe"> Registrarse </button>

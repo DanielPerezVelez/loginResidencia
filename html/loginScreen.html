@@ -34,18 +34,6 @@
                         <button id="btnFoLo"> Entrar </button>
                     </div>
                     <br>
-                    <?php if(isset($_GET['registroValido'])){
-                        ?>
-                        <script src="js/mostrarLo.js"></script>
-                        <a class="aExito">¡Usuario registrado exitosamente!</a>
-                        <?php
-                    }?>
-                    <?php if(isset($_GET['errorLogin'])){
-                        ?>
-                        <script src="js/mostrarLo.js"></script>
-                        <a class="aFallo">¡Correo o contraseña incorrectas!</a>
-                        <?php
-                    }?>
                 </form>
 
                 <form id="formRegister" action="php/registroUsuario.php" method="POST" class="formulario_register">
@@ -58,31 +46,18 @@
                         <input required id="inputPasswordRe" type="password" placeholder="Contraseña" class="registerPasswordClass" name="registerPassword">
                     </div>
                     <br>
+                    <h4>¿Qué desea hacer?</h4>
+                    <br>
+                    <select name="selectRol" id="selectRol">
+                        <option value="admin">Administrar sus propiedades</option>
+                        <option value="clienteCompra">Adquirir una propiedad</option>
+                        <option value="clienteVende">Ofrecer propiedades a clientes</option>
+                    </select>
                     <a class="aFallo" id="error"></a>
                     <div class="divBtnFoRe">
                         <button id="btnFoRe"> Registrarse </button>
                     </div>
                     <br>
-                    <?php if(isset($_GET['errorCorreo'])){
-                        ?>
-                        <script src="js/mostrarRe.js"></script>
-                        <div class="divErrores1">
-                            <a class="aFallo">El correo ya ha sido utilizado con anterioridad.</a>
-                            <br>
-                            <a class="aFallo">Inicia sesion para continuar.</a>
-                        </div>
-                        <?php
-                        }
-                        if(isset($_GET['errorTelefono'])){
-                        ?>
-                        <script src="js/mostrarRe.js"></script>
-                        <div class="divErrores2">
-                            <a class="aFallo">El telefono que ingresaste ya está ocupado.</a>
-                            <br>
-                            <a class="aFallo">Elige uno diferente para continuar.</a>
-                        </div>
-                        <?php
-                    }?>
                 </form>
             </div>
         </div>

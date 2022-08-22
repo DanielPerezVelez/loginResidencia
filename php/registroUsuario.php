@@ -21,6 +21,10 @@ if(buscarCorreoRepetido($correo,$conexion)==0 && buscarTelefonoRepetido($telefon
     $resultado = mysqli_query($conexion,$query);
     sleep(1);
     header("location: ../loginScreen.php?registroValido=true");
+   /* if ($_REQUEST['selectRol']=='admin') {
+        $admin=$_REQUEST['registerNombres'] + $_REQUEST['registerApellidos'];
+        echo $admin;
+    }*/
 }
 
 //Se crea una función para que busque registros repetidos a partir de las variables
