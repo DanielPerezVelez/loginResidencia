@@ -16,7 +16,7 @@ if(buscarTelefonoRepetido($telefono,$conexion)==1){
     header("location: ../loginScreen.php?errorTelefono=true");    
 }
 if(buscarCorreoRepetido($correo,$conexion)==0 && buscarTelefonoRepetido($telefono,$conexion)==0){ //Si no está duplicado, el sistema podrá ingresar el registro a la base de datos
-    $query= "INSERT INTO usuarios(nombres, apellidos, correo, password, telefono)
+    $query= "INSERT INTO cliente(nombres, apellidos, correo, password, telefono)
     VALUES ('$nombres','$apellidos','$correo','$password','$telefono')";
     $resultado = mysqli_query($conexion,$query);
     sleep(1);
@@ -29,7 +29,7 @@ if(buscarCorreoRepetido($correo,$conexion)==0 && buscarTelefonoRepetido($telefon
 
 //Se crea una función para que busque registros repetidos a partir de las variables
 function buscarCorreoRepetido($correo,$conexion){
-    $query="SELECT * FROM usuarios WHERE correo='$correo'";
+    $query="SELECT * FROM cliente WHERE correo='$correo'";
     $resultado=mysqli_query($conexion,$query);
     if(mysqli_num_rows($resultado) > 0){
         return 1;
@@ -39,7 +39,7 @@ function buscarCorreoRepetido($correo,$conexion){
 }
 
 function buscarTelefonoRepetido($telefono,$conexion){
-    $query="SELECT * FROM usuarios WHERE telefono='$telefono'";
+    $query="SELECT * FROM cliente WHERE telefono='$telefono'";
     $resultado=mysqli_query($conexion,$query);
     if(mysqli_num_rows($resultado) > 0){
         return 1;

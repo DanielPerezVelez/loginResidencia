@@ -12,7 +12,7 @@ if(validar($correo,$password,$conexion)==1){
 }
 
 function validar($correo,$password,$conexion){
-    $query="SELECT * FROM usuarios WHERE correo='$correo' AND password='$password'";
+    $query="SELECT * FROM cliente WHERE correo='$correo' AND password='$password'";
     $resultado=mysqli_query($conexion,$query);
     //Aqui compara si la consulta es verdadera, de ser verdadera (que haya registros similares) se completará el login
     if(mysqli_num_rows($resultado) > 0){

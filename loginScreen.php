@@ -60,11 +60,31 @@
                     <br>
                     <h4>¿Qué desea hacer?</h4>
                     <br>
-                    <select class="selectRol" name= "selectRol" id="selectRol">
-                        <option value="admin">Administrar sus propiedades</option>
-                        <option value="clienteCompra">Adquirir una propiedad</option>
-                        <option value="clienteVende">Ofrecer propiedades a clientes</option>
+                    <select name= "selectRol">
+                        <?php
+                            function conectarDB() : mysqli {
+                            $conexion = mysqli_connect('localhost', 'root', '', 'bdimmo1');
+                        
+                            if(!$conexion) {
+                                echo "error";
+                                exit;
+                            }
+                            return $conexion;
+                            }
+                            $conexion= conectarDB(); 
+                            $sql='SELECT * FROM rolclt';
+                            $query=mysqli_query($conexion,$sql);
+                            
+                            while($row=mysqli_fetch_array($query)){
+                                $idrolclt=$row['idrolclt'];
+                                $descripcion=$row['descripcion'];
+                        ?>
+                                <option value="<?php echo $idrolclt ?>"><?php echo $descripcion?></option>
+                        <?php
+                            }
+                        ?>
                     </select>
+                    <br>
                     <a class="aFallo" id="error"></a>
                     <div class="divBtnFoRe">
                         <button id="btnFoRe"> Registrarse </button>
