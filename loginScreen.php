@@ -62,15 +62,12 @@
                     <br>
                     <select name= "selectRol">
                         <?php
+                            //Creacion de conexion
                             function conectarDB() : mysqli {
                             $conexion = mysqli_connect('localhost', 'root', '', 'bdimmo1');
-                        
-                            if(!$conexion) {
-                                echo "error";
-                                exit;
-                            }
                             return $conexion;
                             }
+                            
                             $conexion= conectarDB(); 
                             $sql='SELECT * FROM rolclt';
                             $query=mysqli_query($conexion,$sql);
