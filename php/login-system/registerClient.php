@@ -1,6 +1,6 @@
 <?php
-require_once("conexion.php");
-require_once("funciones.php");
+require_once("../conexion.php");
+require_once("../funciones.php");
 $conexion= conectarDB();
 $nombres= clean($_POST ['registerNombres']);
 $apellidos= clean($_POST ['registerApellidos']);
@@ -11,18 +11,18 @@ $rolclt= clean($_POST ['selectRol']);
 
 if(buscarCorreoRepetido($correo,$conexion)==1){
     sleep(1);
-    header("location: ../loginScreen.php?errorCorreo=true");    
+    header("location: loginScreen.php?errorCorreo=true");    
 }
 if(buscarTelefonoRepetido($telefono,$conexion)==1){
     sleep(1);
-    header("location: ../loginScreen.php?errorTelefono=true");    
+    header("location: loginScreen.php?errorTelefono=true");    
 }
 if(buscarCorreoRepetido($correo,$conexion)==0 && buscarTelefonoRepetido($telefono,$conexion)==0){ //Si no está duplicado, el sistema podrá ingresar el registro a la base de datos
     $query= "INSERT INTO cliente(nombres, apellidos, correo, password, telefono, idrolclt)
     VALUES ('$nombres','$apellidos','$correo','$password','$telefono', $rolclt)";
     $resultado = mysqli_query($conexion,$query);
     sleep(1);
-    header("location: ../loginScreen.php?registroValido=true");
+    header("location: loginScreen.php?registroValido=true");
 }
 
 //Se crea una función para que busque registros repetidos a partir de las variables

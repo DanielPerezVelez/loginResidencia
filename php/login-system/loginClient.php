@@ -1,6 +1,6 @@
 <?php
-require_once("conexion.php");
-require_once("funciones.php");
+require_once("../conexion.php");
+require_once("../funciones.php");
 session_start();
 
 $conexion= conectarDB();
@@ -9,7 +9,7 @@ $password= md5($_POST ['loginPassword']);
 
 if(validar($correo,$password,$conexion)==1){
     $_SESSION['username'] = $correo;
-    header("location: ../html/pruebas.php");
+    header("location: ../../html/pruebas.php");
 }
 
 function validar($correo,$password,$conexion){
@@ -21,7 +21,7 @@ function validar($correo,$password,$conexion){
     }else{
         //Error de login
         sleep(1);
-        header("location: ../loginScreen.php?errorLogin=true");
+        header("location: loginScreen.php?errorLogin=true");
     }
 }
 
