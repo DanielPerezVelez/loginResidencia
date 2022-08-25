@@ -25,8 +25,8 @@
                 </div>       
             </div>           
             <!-- Formularios -->
-            <div class="contenedor_login_register">   
-                <form action="php/validarUsuario.php" method="POST" class="formulario_login">
+            <div class="contenedor_login_register"> 
+                <form action="php/loginClient.php" method="POST" class="formulario_login">
                     <h2>Iniciar Sesion</h2>
                     <input required type="text" placeholder="Correo" name="loginCorreo">
                     <input required type="password" placeholder="Contraseña" name="loginPassword">
@@ -48,7 +48,7 @@
                     }?>
                 </form>
 
-                <form id="formRegister" action="php/registroUsuario.php" method="POST" class="formulario_register">
+                <form id="formRegister" action="php/registerClient.php" method="POST" class="formulario_register">
                     <h2>Registrarse</h2>
                     <div>
                         <input required type="text" placeholder="Nombre(s)" class="registerNombreClass" name="registerNombres">

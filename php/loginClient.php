@@ -1,14 +1,15 @@
 <?php
 require_once("conexion.php");
-$conexion= conectarDB();
+require_once("funciones.php");
+session_start();
 
-$correo= $_POST ['loginCorreo'];
-$password= $_POST ['loginPassword'];
+$conexion= conectarDB();
+$correo= clean($_POST ['loginCorreo']);
+$password= md5($_POST ['loginPassword']);
 
 if(validar($correo,$password,$conexion)==1){
-   sleep(1);
-   header("location: ../html/dashboard.html");
-    
+    $_SESSION['username'] = $correo;
+    header("location: ../html/pruebas.php");
 }
 
 function validar($correo,$password,$conexion){
@@ -18,6 +19,7 @@ function validar($correo,$password,$conexion){
     if(mysqli_num_rows($resultado) > 0){
         return 1;
     }else{
+        //Error de login
         sleep(1);
         header("location: ../loginScreen.php?errorLogin=true");
     }

@@ -1,12 +1,13 @@
 <?php
 require_once("conexion.php");
+require_once("funciones.php");
 $conexion= conectarDB();
-$nombres= $_POST ['registerNombres'];
-$apellidos= $_POST ['registerApellidos'];
-$telefono=$_POST ['registerTelefono'];
-$correo= $_POST ['registerCorreo'];
-$password= $_POST ['registerPassword'];
-$rolclt= $_POST ['selectRol'];
+$nombres= clean($_POST ['registerNombres']);
+$apellidos= clean($_POST ['registerApellidos']);
+$telefono=clean($_POST ['registerTelefono']);
+$correo= clean($_POST ['registerCorreo']);
+$password= md5($_POST ['registerPassword']);
+$rolclt= clean($_POST ['selectRol']);
 
 if(buscarCorreoRepetido($correo,$conexion)==1){
     sleep(1);
