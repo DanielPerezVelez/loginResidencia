@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <title>Login y Registro</title>
     <link rel="stylesheet" href="../../css/estilos.css"/>
@@ -26,6 +27,12 @@
             </div>           
             <!-- Formularios -->
             <div class="contenedor_login_register"> 
+                <?php
+                    session_start();
+                    if(isset($_SESSION['username'])){
+                        header("location: ../../html/pruebas.php");
+                    }
+                ?>
                 <form action="loginClient.php" method="POST" class="formulario_login">
                     <h2>Iniciar Sesion</h2>
                     <input required type="text" placeholder="Correo" name="loginCorreo">

@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+body{
+    height: 120vh;
+}
+
+.div-wrapper { 
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+/*align horizontal y justify vertical*/
+/*TOP-WRAPPER*/
+.divtop-wrapper{
+    position: absolute;
+    z-index: 1;
+    position: sticky;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    background-color: #b6ffff;
+}
+
+.div-backhome{
+    margin-left: 0px;
+}
+
+.div-help {
+    margin-left: 1100px;
+}
+
+.div-logout{
+    margin-left: 50px;
+}
+
+.a-btnhome{
+    color: #004173;
+}
+
+.a-help {
+    color:#004173;
+}
+
+.a-logout{
+    color:#d33535;
+}
+
+/*CONTENT-WRAPPER*/
+.divcontent-wrapper{
+    height: 800px;
+    width: 100%;
+    padding: 10px 20px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(../imgs/interior-3778708.jpg);
+    backdrop-filter: blur(2px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.divpics-conf {
+    flex-direction: column;
+    background-color: red;
+    width: 350px;
+}
+
+.divinfo-conf{
+    background-color: green;
+}
+
+.divedit-conf{
+    background-color: black;
+    width: 200px;
+}
+
+.profile-pic{
+    margin-top: 0px;
+    /* background-color: #46A2FD; */
+    text-align: left;
+    width: 350px;
+    height: 350px;
+}
+
+.profile-pic img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20%;
+}

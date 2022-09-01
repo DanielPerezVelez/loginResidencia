@@ -7,22 +7,23 @@ $conexion= conectarDB();
 $correo= clean($_POST ['loginCorreo']);
 $password= md5($_POST ['loginPassword']);
 
-if(validar($correo,$password,$conexion)==1){
-    $_SESSION['username'] = $correo;
-    header("location: ../../html/pruebas.php");
-}
-
-function validar($correo,$password,$conexion){
-    $query="SELECT * FROM cliente WHERE correo='$correo' AND password='$password'";
-    $resultado=mysqli_query($conexion,$query);
-    //Aqui compara si la consulta es verdadera, de ser verdadera (que haya registros similares) se completará el login
-    if(mysqli_num_rows($resultado) > 0){
-        return 1;
-    }else{
-        //Error de login
-        sleep(1);
-        header("location: loginScreen.php?errorLogin=true");
+$query="SELECT * FROM cliente WHERE correo='$correo' AND password='$password'";
+$resultado=mysqli_query($conexion,$query);
+//Aqui compara si la consulta es verdadera, de ser verdadera (que haya registros similares) se completará el login
+if(mysqli_num_rows($resultado) > 0){
+    while($row=mysqli_fetch_array($resultado)){
+        if($correo==$row["correo"] && $password==$row["password"]){
+            $_SESSION['usermail']=$correo;
+            $_SESSION['idcliente']=$row['idcliente'];
+            $_SESSION['nombres']=$row['nombres'];
+            //te manda al dashboard
+            header("location: ../index1.php");
+        }
     }
+}else{
+    //Error de login
+    sleep(1);
+    header("location: loginScreen.php?errorLogin=true");
 }
 
 mysqli_close($conexion);
