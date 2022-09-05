@@ -3,11 +3,14 @@ require_once("../conexion.php");
 require_once("../funciones.php");
 session_start();
 //Para que se apliquen los cambios de $_SESSION se debe DESTRUIR LA SESION ACTUAL
-$idcliente=$_GET['id'];
+$idcliente=$_SESSION['idcliente'];
+$nombreCliente=$_SESSION['nombres'];
+$profilePic=$_SESSION['profilepic'];
+$_SESSION['a']=$profilePic;
 $conexion= conectarDB();
 if(!isset($_SESSION['usermail'])){
     sleep(1);
-    header("location: loginScreen.php");
+    header("location: ../login-system/loginScreen.php");
 }
 ?>
 <!DOCTYPE html>
@@ -19,6 +22,7 @@ if(!isset($_SESSION['usermail'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link href="../../css/estilos-perfil.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
 <body id="page">
@@ -26,16 +30,11 @@ if(!isset($_SESSION['usermail'])){
         <div id="top-wrapper" class="divtop-wrapper">
             <div class="div-backhome">
                 <a class="a-btnhome" href="../index1.php" role="button">
-                IMMO CRM360
+                    IMMO CRM360
                 </a>             
             </div>
-            <div class="div-help">
-                <a class="a-help" href="../../html/homeInterfaz.html" role="button">
-                    ?
-                </a> 
-            </div>
             <div class="div-logout">
-                <a class="a-logout" href="logoutClient.php" role="button">
+                <a class="a-logout" href="../login-system/logoutClient.php" role="button">
                     Salir
                 </a>
             </div>
@@ -43,28 +42,18 @@ if(!isset($_SESSION['usermail'])){
 
         <div id="content-wrapper" class="divcontent-wrapper">
             <div id="pics-conf" class="divpics-conf">
-                <div class="profile-pic">
-                    <button>
-                        hi
-                    </button> 
-                </div>
-                <div class="pic-change">
-                    <button>
-                        there
-                    </button>
-                </div>            
+                <form id="formProPic" class="formProPic" action="uploadImage.php" method="POST" enctype="multipart/form-data">
+                    <div class="profile-pic">
+                        <img src="../../imgs/<?php echo $_SESSION['a'];?>" width=370 height=370/>
+                    </div>
+                    <div class="pic-change">
+                        <input type="file" name="uploadImage" id="uploadImage" accept=".jpg, .jpeg, .png" value="a">
+                        <input type="submit" name="submit" value="Subir imagen">
+                    </div>
+                </form>
             </div>
             <div id="info-conf" class="divinfo-conf">
-                <?php
-                    if(isset($idcliente)){
-                    $query="SELECT * FROM cliente WHERE idcliente=$idcliente";
-                    $resultado=mysqli_query($conexion,$query);
-                    while($row=mysqli_fetch_array($resultado)){?>
-                <h1><?php echo $_SESSION['nombres']; ?> </h1>
-                <?php
-                        }
-                    }
-                ?>
+                <h1><?php echo $nombreCliente; ?> </h1>
             </div>
             <div id="edit-conf" class="divedit-conf">
                 <ul class="perfil-edit-conf" id="perfilEditSidebar">

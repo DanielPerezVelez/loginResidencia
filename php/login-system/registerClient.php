@@ -8,6 +8,7 @@ $telefono=clean($_POST ['registerTelefono']);
 $correo= clean($_POST ['registerCorreo']);
 $password= md5($_POST ['registerPassword']);
 $rolclt= clean($_POST ['selectRol']);
+$defaultPic="default-client-pic.png";
 
 if(buscarCorreoRepetido($correo,$conexion)==1){
     sleep(1);
@@ -18,8 +19,8 @@ if(buscarTelefonoRepetido($telefono,$conexion)==1){
     header("location: loginScreen.php?errorTelefono=true");    
 }
 if(buscarCorreoRepetido($correo,$conexion)==0 && buscarTelefonoRepetido($telefono,$conexion)==0){ //Si no está duplicado, el sistema podrá ingresar el registro a la base de datos
-    $query= "INSERT INTO cliente(nombres, apellidos, correo, password, telefono, idrolclt)
-    VALUES ('$nombres','$apellidos','$correo','$password','$telefono', $rolclt)";
+    $query= "INSERT INTO cliente(nombres, apellidos, correo, password, telefono, idrolclt, profilepic)
+    VALUES ('$nombres','$apellidos','$correo','$password','$telefono', $rolclt, '$defaultPic')";
     $resultado = mysqli_query($conexion,$query);
     sleep(1);
     header("location: loginScreen.php?registroValido=true");

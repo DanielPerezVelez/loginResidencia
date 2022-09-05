@@ -29,8 +29,8 @@
             <div class="contenedor_login_register"> 
                 <?php
                     session_start();
-                    if(isset($_SESSION['username'])){
-                        header("location: ../../html/pruebas.php");
+                    if(isset($_SESSION['usermail'])){
+                        header("location: ../index1.php");
                     }
                 ?>
                 <form action="loginClient.php" method="POST" class="formulario_login">

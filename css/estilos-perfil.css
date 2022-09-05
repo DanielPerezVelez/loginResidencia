@@ -19,6 +19,7 @@ body{
 /*align horizontal y justify vertical*/
 /*TOP-WRAPPER*/
 .divtop-wrapper{
+    margin-top: 0px;
     position: absolute;
     z-index: 1;
     position: sticky;
@@ -28,42 +29,42 @@ body{
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    background-color: #b6ffff;
+    background-color: #2b91df;
 }
 
 .div-backhome{
     margin-left: 0px;
 }
 
-.div-help {
-    margin-left: 1100px;
-}
-
 .div-logout{
-    margin-left: 50px;
+    margin-left: 1150px;
 }
 
 .a-btnhome{
-    color: #004173;
-}
-
-.a-help {
-    color:#004173;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 .a-logout{
-    color:#d33535;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.a-logout:hover{
+    color: #d34240;
+    transition: 400ms;
 }
 
 /*CONTENT-WRAPPER*/
 .divcontent-wrapper{
     height: 800px;
     width: 100%;
+    margin-top: 0px;
     padding: 10px 20px;
     position: relative;
     display: flex;
     justify-content: space-between;
-    background-image: url(../imgs/interior-3778708.jpg);
+    background-image: url(../imgs/img-login-screen.jpg);
     backdrop-filter: blur(2px);
     background-size: cover;
     background-repeat: no-repeat;
@@ -73,8 +74,8 @@ body{
 
 .divpics-conf {
     flex-direction: column;
-    background-color: red;
-    width: 350px;
+    background-color: rosybrown;
+    width: 400px;
 }
 
 .divinfo-conf{
@@ -87,15 +88,26 @@ body{
 }
 
 .profile-pic{
-    margin-top: 0px;
-    /* background-color: #46A2FD; */
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
     text-align: left;
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
 }
 
 .profile-pic img{
     max-width: 100%;
     max-height: 100%;
-    border-radius: 20%;
+    border-radius: 100%;
+    margin-left: 15px;
+}
+
+.pic-change {
+    margin-left: 10px;
+    display: block;
+}
+
+.pic-change input{
+    margin-left: 5px;
 }
