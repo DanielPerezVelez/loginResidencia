@@ -6,7 +6,6 @@ session_start();
 $idcliente=$_SESSION['idcliente'];
 $nombreCliente=$_SESSION['nombres'];
 $profilePic=$_SESSION['profilepic'];
-$_SESSION['a']=$profilePic;
 $conexion= conectarDB();
 if(!isset($_SESSION['usermail'])){
     sleep(1);
@@ -44,7 +43,7 @@ if(!isset($_SESSION['usermail'])){
             <div id="pics-conf" class="divpics-conf">
                 <form id="formProPic" class="formProPic" action="uploadImage.php" method="POST" enctype="multipart/form-data">
                     <div class="profile-pic">
-                        <img src="../../imgs/<?php echo $_SESSION['a'];?>" width=370 height=370/>
+                        <img src="../../imgs/<?php echo $profilePic;?>" width=370 height=370/>
                     </div>
                     <div class="pic-change">
                         <input type="file" name="uploadImage" id="uploadImage" accept=".jpg, .jpeg, .png" value="a">

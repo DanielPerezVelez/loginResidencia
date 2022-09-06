@@ -6,7 +6,7 @@ session_start();
 $idcliente=$_SESSION['idcliente'];
 
 if (isset($_POST['submit']) && isset($_FILES['uploadImage'])){
-    
+    header ("location: perfil.php");
     $_FILES['uploadImage'];
    
     $img_name=$_FILES['uploadImage']['name'];
