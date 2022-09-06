@@ -6,7 +6,6 @@ session_start();
 $idcliente=$_SESSION['idcliente'];
 
 if (isset($_POST['submit']) && isset($_FILES['uploadImage'])){
-    header ("location: perfil.php");
     $_FILES['uploadImage'];
    
     $img_name=$_FILES['uploadImage']['name'];
@@ -27,11 +26,11 @@ if (isset($_POST['submit']) && isset($_FILES['uploadImage'])){
                 $new_img_name=uniqid("IMG-", true).'.'.$img_ex_lc;
                 $img_upload_path='../../imgs/'.$new_img_name;
                 move_uploaded_file($tmp_name,$img_upload_path);
-
                 //actualizar la columna profilepic de la base de datos
+                $_SESSION['profilepic']=$new_img_name;
+                header("location: perfil.php");    
                 $query="UPDATE cliente SET profilepic='$new_img_name' WHERE idcliente='$idcliente' ";
-                mysqli_query($conexion,$query);
-                
+                mysqli_query($conexion,$query);         
             }else{
                 $em="Not valid file type!";
                 header("Location: perfil.php?error=$em");
