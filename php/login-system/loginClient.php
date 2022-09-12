@@ -16,6 +16,13 @@ if(mysqli_num_rows($resultado) > 0){
             $_SESSION['usermail']=$correo;
             $_SESSION['idcliente']=$row['idcliente'];
             $_SESSION['nombres']=$row['nombres'];
+            $_SESSION['apellidos']=$row['apellidos'];
+            $_SESSION['nacionalidad']=$row['idnacionalidad'];
+            $_SESSION['aboutme']=$row['aboutme'];
+            $_SESSION['ciudadresi']=$row['ciudadresi'];
+            $_SESSION['ciudadorigen']=$row['ciudadorigen'];
+            $_SESSION['sexo']=$row['sexo'];
+            $_SESSION['anionac']=$row['anionac'];
             $_SESSION['profilepic']=$row['profilepic'];
             //te manda al dashboard
             header("location: ../index1.php");

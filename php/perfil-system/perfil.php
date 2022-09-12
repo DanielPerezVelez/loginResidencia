@@ -4,9 +4,18 @@ require_once("../funciones.php");
 session_start();
 //Para que se apliquen los cambios de $_SESSION se debe DESTRUIR LA SESION ACTUAL
 $idcliente=$_SESSION['idcliente'];
+$correoCliente=$_SESSION['usermail'];
 $nombreCliente=$_SESSION['nombres'];
+$apellidosCliente=$_SESSION['apellidos'];
+$aboutme=$_SESSION['aboutme'];
+$cdr=$_SESSION['ciudadresi'];
+$cdo=$_SESSION['ciudadorigen'];
+$sexo=$_SESSION['sexo'];
+$adn=$_SESSION['anionac'];
+$nacionalidad=$_SESSION['nacionalidad'];
 $profilePic=$_SESSION['profilepic'];
 $conexion= conectarDB();
+
 if(!isset($_SESSION['usermail'])){
     sleep(1);
     header("location: ../login-system/loginScreen.php");
@@ -52,19 +61,104 @@ if(!isset($_SESSION['usermail'])){
                 </form>
             </div>
             <div id="info-conf" class="divinfo-conf">
-                <h1><?php echo $nombreCliente; ?> </h1>
+                <div class="div-h1info">
+                    <h1>Información de perfil</h1>
+                </div>
+                <form class="form-info">
+                    <div class="div-form-info">
+                        <a class="a-nombre">Nombre(s):</a>
+                        <a><?php echo "$nombreCliente.";?></a>
+                        <br><br><br>
+                        <a class="a-apellido">Apellido(s):</a>
+                        <a><?php echo "$apellidosCliente";?></a>
+                        <br><br><br>
+                        <div>
+                        <a class="a-nac">Nacionalidad:</a>
+                            <a class="a-nac2">
+                                <?php
+                                    if($_SESSION['nacionalidad']==''){
+                                        echo "No especificado";
+                                    }else{
+                                        echo "$nacionalidad";
+                                    }
+                                ?>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="div-form-aboutme">
+                        <h1>Acerca de mi</h1>
+                        <br><br>
+                        <textarea class="textarea-aboutme">
+                            <?php
+                                if($_SESSION['aboutme']==''){
+                                    echo "Escribe algo sobre ti...";
+                                }else{
+                                    echo "$aboutme";
+                                }
+                            ?>
+                        </textarea>
+                    </div>    
+                </form>
             </div>
             <div id="edit-conf" class="divedit-conf">
-                <ul class="perfil-edit-conf" id="perfilEditSidebar">
-                    <button>
-                        ?
-                    </button>
-                </ul>
+                <div class="div-hrefs">
+                    <br>
+                    <a class="a-editperfil" href="editarPerfil.php">Editar perfil.</a>
+                    <br><br>
+                    <a class="a-guardados" href="">Guardados</a>
+                    <br><br>
+                    <a class="a-interesantes" href="">Interesantes</a>
+                    <br><br>
+                </div>
+                <div class="div-infoad">
+                    <br>
+                    <h4>Ciudad de residencia</h4>
+                    <a class="a-nac2">
+                        <?php
+                            if($_SESSION['ciudadresi']==''){
+                                echo "No especificado";
+                            }else{
+                                echo "$cdr";
+                            }
+                        ?>
+                    </a>
+                    <br><br><br>
+                    <h4>Ciudad de origen</h4>
+                    <a class="a-nac2">
+                        <?php
+                            if($_SESSION['ciudadorigen']==''){
+                                echo "No especificado";
+                            }else{
+                                echo "$cdo";
+                            }
+                        ?>
+                    </a>
+                    <br><br><br>
+                    <h4>Sexo</h4>
+                    <a class="a-nac2">
+                        <?php
+                            if($_SESSION['sexo']==''){
+                                echo "No especificado";
+                            }else{
+                                echo "$sexo";
+                            }
+                        ?>
+                    </a>
+                    <br><br><br>
+                    <h4>Año de nacimiento</h4>
+                    <a class="a-nac2">
+                        <?php
+                            if($_SESSION['anionac']==''){
+                                echo "No especificado";
+                            }else{
+                                echo "$adn";
+                            }
+                        ?>
+                    </a>
+                    <br><br>
+                </div>
             </div>
         </div>
-        <footer>
-            hi 
-         </footer>
     </div>
 </body>
 </html>
